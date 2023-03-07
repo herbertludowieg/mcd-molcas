@@ -55,6 +55,7 @@ jobs:
       CC: icx
       CXX: icpx
       FC: ifort
+      BASE_DIR: /opt/intel/oneapi/compiler/latest/linux
       INSTALL_PATH: /opt/intel/oneapi/compiler/latest/linux/bin/intel64
       MKLROOT: /opt/intel/oneapi/mkl/latest
     runs-on: ${{ matrix.os }}
@@ -82,6 +83,8 @@ jobs:
       - name: Setup Intel oneAPI environment
         run: |
           source /opt/intel/oneapi/setvars.sh
+          export LD_LIBRARY_PATH=${{ env.BASE_DIR }}/compiler/lib/intel64 \
+              :${{ env.BASE_DIR }}/ipp/lib/intel64
       - name: Debugging
         run: |
           echo "Checking LD_LIBRARY_PATH"
