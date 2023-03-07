@@ -55,6 +55,8 @@ jobs:
       CC: icx
       CXX: icpx
       FC: ifort
+      INSTALL_PATH: /opt/intel/oneapi/compiler/latest/linux/bin/intel64
+      MKLROOT: /opt/intel/oneapi/mkl/latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
@@ -82,7 +84,8 @@ jobs:
           source /opt/intel/oneapi/setvars.sh
       - name: Compile
         run: |
-          make -f Makefile.ifort
+          make -f Makefile.ifort FC=${{ INSTALL_PATH }}/ifort \
+            FC90=${{ INSTALL_PATH }}/ifort LINKER=${{ INSTALL_PATH }}/ifort
       - name: Run the tests
         run: |
           source tag.sh
