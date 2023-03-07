@@ -48,8 +48,9 @@ jobs:
   build-intel-oneapi:
     strategy:
       fail-fast: false
-      os: [ubuntu-latest, ubuntu-20.04]
-      python-version: ['3.9']
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04]
+        python-version: ['3.9']
     env:
       CC: icx
       CXX: icpx
