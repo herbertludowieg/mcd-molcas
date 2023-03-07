@@ -87,6 +87,10 @@ jobs:
           echo $MKLROOT
           ls -l /opt/intel/oneapi/mkl/latest
           ls -l /opt/intel/oneapi/mkl/latest/lib/intel64
+          echo "Files that are not found when compiling"
+          ls -l /opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_intel_lp64.a
+          ls -l /opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_core.a
+          ls -l /opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_sequential.a
       - name: Compile
         run: |
           make -f Makefile.ifort FC=${{ env.INSTALL_PATH }}/ifort \
