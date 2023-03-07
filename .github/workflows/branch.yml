@@ -84,8 +84,9 @@ jobs:
           source /opt/intel/oneapi/setvars.sh
       - name: Compile
         run: |
-          make -f Makefile.ifort FC=${{ INSTALL_PATH }}/ifort \
-            FC90=${{ INSTALL_PATH }}/ifort LINKER=${{ INSTALL_PATH }}/ifort
+          make -f Makefile.ifort FC=${{ env.INSTALL_PATH }}/ifort \
+                  FC90=${{ env.INSTALL_PATH }}/ifort \
+                  LINKER=${{ env.INSTALL_PATH }}/ifort
       - name: Run the tests
         run: |
           source tag.sh
