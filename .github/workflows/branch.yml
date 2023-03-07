@@ -83,8 +83,7 @@ jobs:
       - name: Setup Intel oneAPI environment
         run: |
           source /opt/intel/oneapi/setvars.sh
-          export LD_LIBRARY_PATH=${{ env.BASE_DIR }}/compiler/lib/intel64 \
-              :${{ env.BASE_DIR }}/ipp/lib/intel64
+          export LD_LIBRARY_PATH=${{ env.BASE_DIR }}/compiler/lib/intel64:${{ env.BASE_DIR }}/ipp/lib/intel64
       - name: Debugging
         run: |
           echo "Checking LD_LIBRARY_PATH"
