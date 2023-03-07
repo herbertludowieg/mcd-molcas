@@ -56,7 +56,7 @@ jobs:
       CXX: icpx
       FC: ifort
       INSTALL_PATH: /opt/intel/oneapi/compiler/latest/linux/bin/intel64
-      #MKLROOT: /opt/intel/oneapi/mkl/latest
+      MKLROOT: /opt/intel/oneapi/mkl/latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
@@ -85,8 +85,8 @@ jobs:
       - name: Debugging
         run: |
           echo $MKLROOT
-          ls /opt/intel/oneapi/mkl/latest
-          ls /opt/intel/oneapi/mkl/latest/lib
+          ls -l /opt/intel/oneapi/mkl/latest
+          ls -l /opt/intel/oneapi/mkl/latest/lib/intel64
       - name: Compile
         run: |
           make -f Makefile.ifort FC=${{ env.INSTALL_PATH }}/ifort \
