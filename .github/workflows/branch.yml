@@ -58,6 +58,7 @@ jobs:
       BASE_DIR: /opt/intel/oneapi/compiler/latest/linux
       INSTALL_PATH: /opt/intel/oneapi/compiler/latest/linux/bin/intel64
       MKLROOT: /opt/intel/oneapi/mkl/latest
+      LD_LIBRARY_PATH: ${{ env.BASE_DIR }}/compiler/lib/intel64:${{ env.BASE_DIR }}/ipp/lib/intel64 
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
@@ -89,7 +90,6 @@ jobs:
           echo $LD_LIBRARY_PATH
       - name: Compile
         run: |
-          export LD_LIBRARY_PATH=${{ env.BASE_DIR }}/compiler/lib/intel64:${{ env.BASE_DIR }}/ipp/lib/intel64
           make -f Makefile.ifort FC=${{ env.INSTALL_PATH }}/ifort \
                   FC90=${{ env.INSTALL_PATH }}/ifort \
                   LINKER=${{ env.INSTALL_PATH }}/ifort
