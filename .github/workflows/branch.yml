@@ -118,7 +118,7 @@ jobs:
           ls tests
       - name: Install Dependencies
         run: |
-          pip install --upgrade --upgrade-strategy eager -r tests/python-requirements.publish.txt -r tests/python-requirements.txt -e .
+          pip install --upgrade -r tests/python-requirements.publish.txt -r tests/python-requirements.txt
       - name: Sphinx build
         run: |
           sphinx-build docs/source _build
